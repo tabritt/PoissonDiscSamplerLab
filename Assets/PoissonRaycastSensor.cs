@@ -8,6 +8,7 @@ public class PoissonRaycastSensor : MonoBehaviour
     public float scanInterval = 0.5f;
     public LayerMask wallMask; //this will be for the Walls to hide
     public LayerMask avoideeMask; //this will be for the Running away from object
+    public LayerMask safePointMask;
 
     private float nextScanTime = 0f;
 
@@ -49,6 +50,11 @@ public class PoissonRaycastSensor : MonoBehaviour
                 {
                     Debug.DrawLine(origin, hit.point, Color.yellow, scanInterval);
                     Debug.Log("can hide here!");
+                }
+                if (((1 << hit.collider.gameObject.layer) & safePointMask) != 0)
+                {
+                    Debug.DrawLine(origin, hit.point, Color.blue, scanInterval);
+                    Debug.Log("I'm safe!");
                 }
             }
             else
