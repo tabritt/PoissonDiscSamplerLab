@@ -998,6 +998,9 @@ MonoBehaviour:
   avoideeMask:
     serializedVersion: 2
     m_Bits: 64
+  safePointMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &690293089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,10 +1578,13 @@ MonoBehaviour:
   scanInterval: 0.5
   wallMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   avoideeMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  safePointMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1339518081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,18 +1614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e061284986db4242a768d5ec83a650b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafepointManager
-  safePoints:
-  - {fileID: 1762524154}
-  - {fileID: 1422545928}
-  - {fileID: 1270033001}
-  - {fileID: 544494411}
-  - {fileID: 17272745}
-  - {fileID: 1231737225}
-  - {fileID: 1919105534}
-  - {fileID: 103087837}
-  - {fileID: 2029394544}
-  - {fileID: 844184686}
-  Avoidee: {fileID: 1292730292}
+  safePoints: 00000000000000000000
+  avoidee: {fileID: 0}
 --- !u!4 &1339518083
 Transform:
   m_ObjectHideFlags: 0
