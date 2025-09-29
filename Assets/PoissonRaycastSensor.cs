@@ -43,12 +43,12 @@ public class PoissonRaycastSensor : MonoBehaviour
 
                 if (((1 << hit.collider.gameObject.layer) & avoideeMask) != 0)
                 {
-                    Debug.DrawLine(origin, hit.point, Color.red, scanInterval);
+                    Debug.DrawLine(origin, hit.point, Color.yellow, scanInterval);
                     Debug.Log("Run away!");
                 }
                 if (((1 << hit.collider.gameObject.layer) & wallMask) != 0)
                 {
-                    Debug.DrawLine(origin, hit.point, Color.yellow, scanInterval);
+                    Debug.DrawLine(origin, hit.point, Color.green, scanInterval);
                     Debug.Log("can hide here!");
                 }
                 if (((1 << hit.collider.gameObject.layer) & safePointMask) != 0)
@@ -59,7 +59,7 @@ public class PoissonRaycastSensor : MonoBehaviour
             }
             else
             {
-                Debug.DrawRay(origin, direction * scanRadius, Color.green, scanInterval);
+                Debug.DrawRay(origin, direction * scanRadius, Color.red, scanInterval);
             }
         }
     }
