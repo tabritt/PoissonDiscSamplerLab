@@ -876,6 +876,8 @@ GameObject:
   - component: {fileID: 686017708}
   - component: {fileID: 686017707}
   - component: {fileID: 686017711}
+  - component: {fileID: 686017712}
+  - component: {fileID: 686017714}
   m_Layer: 0
   m_Name: Who Will Be Running
   m_TagString: Untagged
@@ -971,7 +973,7 @@ Transform:
   m_GameObject: {fileID: 686017705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.70758, y: 1.53, z: -7.15}
+  m_LocalPosition: {x: -4.70758, y: 1.53, z: -9.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -990,6 +992,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoissonRaycastSpawner
   scanRadius: 10
+  minDistanceBetweenRays: 1.5
+  scanInterval: 0.5
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 8
+  avoideeMask:
+    serializedVersion: 2
+    m_Bits: 64
+  avoidee: {fileID: 1292730296}
+  eyeHeight: 1.6
+  agent: {fileID: 686017712}
+  standOffFromWall: 0.6
+  repathCooldown: 0.75
+  navSampleRadius: 1
+--- !u!195 &686017712
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686017705}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &686017714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686017705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1979851418, guid: b7d427edd02c707478bb63ad7d2ac564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PoissonDiscLab.dll::MyGame.Sensors.PoissonRaycastSensor
+  scanRadius: 10
   traceDistBetween: 1.5
   scanInterval: 0.5
   wallMask:
@@ -998,9 +1049,12 @@ MonoBehaviour:
   avoideeMask:
     serializedVersion: 2
     m_Bits: 64
-  safePointMask:
-    serializedVersion: 2
-    m_Bits: 128
+  avoidee: {fileID: 1292730296}
+  eyeHeight: 1.6
+  agent: {fileID: 686017712}
+  standOffFromWall: 0.6
+  repathCooldown: 0.75
+  navSampleRadius: 1
 --- !u!1 &690293089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1497,7 @@ GameObject:
   - component: {fileID: 1292730293}
   - component: {fileID: 1292730297}
   - component: {fileID: 1292730298}
+  - component: {fileID: 1292730299}
   m_Layer: 6
   m_Name: Avoidee
   m_TagString: Untagged
@@ -1551,7 +1606,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292730292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de261fa37744b5d4dbeaf4a65d1064fa, type: 3}
   m_Name: 
@@ -1559,7 +1614,7 @@ MonoBehaviour:
   targets:
   - {fileID: 764524651}
   - {fileID: 133425062}
-  walkSpeed: 3.5
+  walkSpeed: 0
   stoppingDistance: 0.1
 --- !u!114 &1292730298
 MonoBehaviour:
@@ -1568,13 +1623,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292730292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9d5404c641003a4182b6c5eebda7767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoissonRaycastSensor
   scanRadius: 10
-  traceDistBetween: 1.5
+  minDistanceBetweenRays: 1.5
   scanInterval: 0.5
   wallMask:
     serializedVersion: 2
@@ -1582,9 +1637,34 @@ MonoBehaviour:
   avoideeMask:
     serializedVersion: 2
     m_Bits: 64
-  safePointMask:
-    serializedVersion: 2
-    m_Bits: 128
+  avoidee: {fileID: 1292730296}
+  eyeHeight: 1.6
+  agent: {fileID: 1292730299}
+  standOffFromWall: 0.6
+  repathCooldown: 0.75
+  navSampleRadius: 1
+--- !u!195 &1292730299
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292730292}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1339518081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,8 +1694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e061284986db4242a768d5ec83a650b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafepointManager
-  safePoints: 00000000000000000000
-  avoidee: {fileID: 0}
 --- !u!4 &1339518083
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,6 +1773,70 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1801526162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1492513636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1492513638}
+  - component: {fileID: 1492513637}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1492513637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492513636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: af1d17aa0e149824589a9a0eecf07f33, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &1492513638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492513636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.56931, y: 0.5, z: -10.34598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511867660
 GameObject:
@@ -1952,3 +2094,4 @@ SceneRoots:
   - {fileID: 1408167087}
   - {fileID: 1801526162}
   - {fileID: 1339518083}
+  - {fileID: 1492513638}

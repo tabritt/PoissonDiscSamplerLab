@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class SafepointManager : MonoBehaviour
 {
@@ -18,4 +18,4 @@ public class SafepointManager : MonoBehaviour
 
         }
     }
-}
+}*/
