@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 686017707}
   - component: {fileID: 686017711}
   - component: {fileID: 686017712}
-  - component: {fileID: 686017714}
+  - component: {fileID: 686017713}
   m_Layer: 0
   m_Name: Who Will Be Running
   m_TagString: Untagged
@@ -1028,7 +1028,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &686017714
+--- !u!114 &686017713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 686017705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1979851418, guid: b7d427edd02c707478bb63ad7d2ac564, type: 3}
+  m_Script: {fileID: 1979851418, guid: 875b67de628b1804abfcca8c425ef16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PoissonDiscLab.dll::MyGame.Sensors.PoissonRaycastSensor
   scanRadius: 10
